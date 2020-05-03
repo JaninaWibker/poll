@@ -11,7 +11,11 @@ get '/' do
 end
 
 get '/create' do
-  erb :create, :layout => :layout
+  erb :create_simple, :layout => :layout
+end
+
+get '/create/advanced' do
+  erb :create_advanced, :layout => :layout
 end
 
 get '/p/:id' do
