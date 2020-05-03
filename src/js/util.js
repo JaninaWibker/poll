@@ -4,7 +4,12 @@ const createElement = (type, properties={}, children=[]) => {
     el.setAttribute(key, properties[key])
   )
   children.forEach(child =>
-    el.appendChild(child instanceof Node || child instanceof String || typeof child === 'string' ? child : child.render())
+    el.appendChild(child instanceof Node
+      ? child 
+      : child instanceof String || typeof child === 'string'
+        ? document.createTextNode(child) 
+        : child.render()
+    )
   )
   return el
 }

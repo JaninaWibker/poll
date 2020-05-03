@@ -17,7 +17,7 @@ import { createElement, insertChildAtIndex, array_insert, El } from './util.js'
     answerListEl.mounted = true
 
     submitButtonEl.addEventListener('click', e => console.log(answerListEl.get_answers()))
-    
+
   })
 
   const createAnswerElement = (id, answer = '') =>
@@ -122,7 +122,7 @@ import { createElement, insertChildAtIndex, array_insert, El } from './util.js'
           if(el.mounted) {
             el.render() // rerender when already mounted
           } else {
-            insertChildAtIndex(this.el, el.render(), i)
+            insertChildAtIndex(this.el, el.render(), i+1) // +1 because of "Answer"-text node
             el.mounted = true
           }
         })
@@ -130,7 +130,7 @@ import { createElement, insertChildAtIndex, array_insert, El } from './util.js'
         const to_be_removed = []
         let i = 0
 
-        Array.from(this.el.children).forEach(el => {
+        Array.from(this.el.children).slice(1).forEach(el => {
           if(!this.answers[i] || this.answers[i].el !== el) {
             to_be_removed.push(el)
           } else {
