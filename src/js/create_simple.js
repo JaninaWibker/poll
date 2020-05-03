@@ -17,9 +17,9 @@ import { createElement, insertChildAtIndex, array_insert, El } from './util.js'
     answerListEl.mounted = true
 
     submitButtonEl.addEventListener('click', e => console.log(answerListEl.get_answers()))
-
+    
   })
-  
+
   const createAnswerElement = (id, answer = '') =>
     createElement('div', { class: 'create-simple-answer-wrapper' }, [
       createElement('input', { class: 'input', id: 'create-simple-answer-' + id,  type: 'text', placeholder: 'Answer', value: answer })
@@ -83,8 +83,8 @@ import { createElement, insertChildAtIndex, array_insert, El } from './util.js'
 
       super(createElement(
         'div',
-        { class: 'create-simple-answer-wrapper' },
-        answerEls
+        { class: 'create-simple-answers' },
+        [createElement('span', {}, ['Answers']), ...answerEls]
       ))
 
       this.answers = answerEls
